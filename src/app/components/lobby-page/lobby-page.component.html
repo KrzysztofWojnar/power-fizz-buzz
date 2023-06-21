@@ -1,0 +1,27 @@
+<p>lobby-page works!</p>
+<input type="hidden" #selection>
+
+  <div class="card-container">
+    <button class="card card-small" (click)="selection.value = 'hard'" tabindex="0">
+      <span>Hard</span>
+    </button>
+
+    <button class="card card-small" (click)="selection.value = 'medium'" tabindex="0">
+      <span>Medium</span>
+    </button>
+
+    <button class="card card-small" (click)="selection.value = 'easy'" tabindex="0">
+      <span>Easy</span>
+    </button>
+
+    <button class="card card-small" (click)="selection.value = 'stoned'" tabindex="0">
+      <span>Stoned</span>
+    </button>
+  </div>
+  <div class="desription" [ngSwitch]="selection.value">
+      <pre *ngSwitchDefault>Choose your opponents</pre>
+      <pre *ngSwitchCase="'hard'">They will never gonna give you up</pre>
+      <pre *ngSwitchCase="'medium'">They know the rules and so do I</pre>
+      <pre *ngSwitchCase="'easy'">You can start here</pre>
+      <pre *ngSwitchCase="'stoned'">They may lose track of the game</pre>
+  </div>
