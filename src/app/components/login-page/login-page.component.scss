@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
+    width: 360px;
     background-color: #313;
     opacity: 0.7;
     padding: 20px;
@@ -50,6 +50,7 @@
   
   input[type="text"],
   input[type="password"] {
+    width: 240px;
     padding: 10px;
     border: 1px solid #777;
     border-radius: 4px;
@@ -73,3 +74,15 @@
   .help {
     text-align: center;
   }
+
+  .validation-error {
+    text-align: left;
+    text-decoration: dotted;
+    text-decoration-color: #a90000;
+    border-left: 5px solid #a90000;
+    background-color: #f99;
+    color: #313;
+    padding: 8px;
+    margin: 0px 8px;
+  }
+  

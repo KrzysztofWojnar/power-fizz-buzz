@@ -1,17 +1,51 @@
 <div class="login-container">
-    <h1>Login</h1>
-    <img [src]="'assets/logo_good.jpg'">
-    <form (ngSubmit)="login()">
+  <h1>Login</h1>
+  <img [src]="'assets/logo_good.jpg'" />
+  <form (ngSubmit)="login()" #userForm="ngForm">
+    <div
+      class="cross-validation"
+      [class.cross-validation-error]="userForm.errors?.['identityRevealed'] && (userForm.touched || userForm.dirty || shouldShowValidation)"
+    ><!-- >? -->
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" [(ngModel)]="username" required>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            #username="ngModel"
+            [ngModelOptions]="{ updateOn: 'blur' }"
+            [(ngModel)]="user.username"
+            required
+          />
+          <div class="validation-error" *ngIf="username.invalid && (username.dirty || username.touched || shouldShowValidation)">
+            <div *ngIf="username.errors?.['required']">
+              Username cannot be empty.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            #password="ngModel"
+            [ngModelOptions]="{ updateOn: 'blur' }"
+            [(ngModel)]="user.password"
+            required
+          />
+          <div div class="validation-error" *ngIf="password.invalid && (password.dirty || password.touched || shouldShowValidation)">
+            <div *ngIf="password.errors?.['required']">
+              <!-- <div> -->
+              Password cannot be empty.
+            </div>
+          </div>
+        </div>
+        <button type="submit" (click)="userForm.invalid ? showValidation() : login()">Login</button>
+        <br />
+        <p class="help">Forgot password?<br />Your problem!</p>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" [(ngModel)]="password" required>
-      </div>
-      <button type="submit">Login</button>
-      <br>
-      <p class="help">Forgot password?<br>Your problem!</p>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>

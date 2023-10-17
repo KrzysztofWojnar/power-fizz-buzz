@@ -6,17 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  username: string;
-  password: string;
+  user = {
+    username: '',
+    password: '',
+  }
+  shouldShowValidation = false;
 
-  constructor() {
-    this.username = '';
-    this.password = '';
+  showValidation() {
+    this.shouldShowValidation = true;
+    console.log('Validation should work now');
   }
 
   login(): void {
-    // Perform login logic here
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
+    console.log(this.user);
   }
 }
